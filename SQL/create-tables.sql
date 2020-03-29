@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS recipes;
+DROP TABLE IF EXISTS glasses;
 DROP TABLE IF EXISTS ingredientsForRecipe;
 DROP TABLE IF EXISTS ingredients;
 DROP TABLE IF EXISTS measurents;
@@ -6,7 +7,15 @@ DROP TABLE IF EXISTS measurents;
 CREATE TABLE recipes (
     recipeID int,
     recipeName varchar(255),
-    recipeInstructions TEXT
+    drinkCategory varchar(255),
+    glassID int,
+    recipeInstructions TEXT,
+    imgLink varchar(255)
+);
+
+CREATE TABLE glasses (
+    glassID int,
+    glassType varchar(255)
 );
 
 CREATE TABLE ingredientsForRecipe (
@@ -22,5 +31,5 @@ CREATE TABLE ingredients (
 
 CREATE TABLE measurents (
     measurementID int,
-    measurementSTR VARCHAR(255)
+    measurementSTR varchar(255)
 );
