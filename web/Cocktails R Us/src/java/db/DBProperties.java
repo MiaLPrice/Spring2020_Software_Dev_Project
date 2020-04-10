@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  * @author saksham
  */
 public class DBProperties {
-
+    // to be removed later
     public static void createProperties() {
         try (OutputStream output = new FileOutputStream("db-config.properties")) {
             Properties prop = new Properties();

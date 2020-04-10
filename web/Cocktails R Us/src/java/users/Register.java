@@ -9,17 +9,16 @@ import db.DBOps;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.PreparedStatement;
 
 /**
  *
  * @author saksham
  */
-@WebServlet(name = "getUser", urlPatterns = {"/getUser"})
-public class getUser extends HttpServlet {
+public class Register extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,8 +30,16 @@ public class getUser extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        DBOps ops = new DBOps();        
+        //if (request.getParameter("email") != null) {
+            String email = request.getParameter("email").trim();
+            String password = request.getParameter("password");
+            String name = request.getParameter("name").trim();
+
+            DBOps db = new DBOps();
+            try (PrintWriter out = response.getWriter()) {
+                out.println(db.addUser(email, password, name));
+            }
+        //}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,7 +69,7 @@ public class getUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
     }
 
     /**
@@ -72,7 +79,7 @@ public class getUser extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "For Users to Login";
+        return "Register User";
     }// </editor-fold>
 
 }
