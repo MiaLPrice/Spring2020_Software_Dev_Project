@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS recipes;
 DROP TABLE IF EXISTS glasses;
 DROP TABLE IF EXISTS ingredientsForRecipe;
 DROP TABLE IF EXISTS ingredients;
-DROP TABLE IF EXISTS measurents;
+DROP TABLE IF EXISTS measurement;
 
 CREATE TABLE recipes (
     recipeID int,
@@ -29,7 +29,7 @@ CREATE TABLE ingredients (
     ingredientName varchar(255)
 );
 
-CREATE TABLE measurents (
+CREATE TABLE measurement (
     measurementID int,
     measurementSTR varchar(255)
 );
