@@ -5,6 +5,7 @@
  */
 package users;
 
+import db.DBOps;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -28,6 +29,10 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        DBOps dBOps = new DBOps();
+        dBOps.loginUser(email, password);
       
     }
 

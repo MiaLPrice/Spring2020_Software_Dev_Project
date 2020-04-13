@@ -39,7 +39,7 @@ public class Register extends HttpServlet {
         DBOps db = new DBOps();
         JSONObject outJSON = new JSONObject();
         try (PrintWriter out = response.getWriter()) {
-            out.println(outJSON.put(Strings.REGISTRATION_RESULT_STR, db.addUser(email, password, name)));
+            out.println(outJSON.put(Strings.REGISTRATION_RESULT_STR, db.registerUser(email, password, name)));
         }
         //}
     }
