@@ -28,7 +28,6 @@ drinks_csv = pd.read_csv("files/all_drinks.csv")
 
 
 
-
 # fill the glasses table
 count = 1
 glasses = {}
@@ -43,11 +42,11 @@ for each in glasses:
 
 # fill the recipes table
 recipes = {} 
-for i in range(0 , len(drinks_csv['recipeID'])):
+for i in range(0 , len(drinks_csv['idDrink'])):
     query =  """INSERT INTO recipes (recipeID, recipeName, drinkCategory, 
         glassID, recipeINstructions, imgLink) VALUES (%s, %s, %s, %s, %s, %s)"""
 
-    index_for = int(drinks_csv['recipeID'][i]) + 1 
+    index_for = int(drinks_csv['idDrink'][i])
     recipe_name = drinks_csv['strDrink'][i]
     recipes.update( { recipe_name : index_for } )
     record = (  str(index_for), 
@@ -85,7 +84,7 @@ for each in measurements:
     cursor.execute(query, record)
 
 # fill the ingredientsForRecipe table 
-for i in range(0 , len(drinks_csv['recipeID'])):
+for i in range(0 , len(drinks_csv['idDrink'])):
     recipe_name = drinks_csv['strDrink'][i]
     recipeID = recipes[recipe_name]
     for j in range(1, 16):
