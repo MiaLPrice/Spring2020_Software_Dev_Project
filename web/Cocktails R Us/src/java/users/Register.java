@@ -5,6 +5,7 @@
  */
 package users;
 
+import common.Strings;
 import db.DBOps;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.PreparedStatement;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -31,14 +32,15 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //if (request.getParameter("email") != null) {
-            String email = request.getParameter("email").trim();
-            String password = request.getParameter("password");
-            String name = request.getParameter("name").trim();
+        String email = request.getParameter("email").trim();
+        String password = request.getParameter("password");
+        String name = request.getParameter("name").trim();
 
-            DBOps db = new DBOps();
-            try (PrintWriter out = response.getWriter()) {
-                out.println(db.addUser(email, password, name));
-            }
+        DBOps db = new DBOps();
+        JSONObject outJSON = new JSONObject();
+        try (PrintWriter out = response.getWriter()) {
+            out.println(outJSON.put(Strings.REGISTRATION_RESULT_STR, db.registerUser(email, password, name)));
+        }
         //}
     }
 
