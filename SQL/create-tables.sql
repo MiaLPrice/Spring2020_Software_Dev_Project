@@ -6,16 +6,16 @@ DROP TABLE IF EXISTS measurement;
 
 CREATE TABLE recipes (
     recipeID int,
-    recipeName varchar(255),
-    drinkCategory varchar(255),
+    recipeName TEXT,
+    drinkCategory TEXT,
     glassID int,
     recipeInstructions TEXT,
-    imgLink varchar(255)
+    imgLink TEXT
 );
 
 CREATE TABLE glasses (
     glassID int,
-    glassType varchar(255)
+    glassType TEXT
 );
 
 CREATE TABLE ingredientsForRecipe (
@@ -26,10 +26,10 @@ CREATE TABLE ingredientsForRecipe (
 
 CREATE TABLE ingredients (
     ingredientID int,
-    ingredientName varchar(255)
+    ingredientName TEXT
 );
 
 CREATE TABLE measurement (
     measurementID int,
-    measurementSTR varchar(255)
+    measurementSTR TEXT
 );
