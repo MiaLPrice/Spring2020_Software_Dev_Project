@@ -11,8 +11,11 @@ package users;
  */
 public class User {
 
-    User() {
+    private String email, name;
 
+    public User(String email, String name) {
+        this.name = name;
+        this.email = email;
     }
 
 }
